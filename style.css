@@ -1,3 +1,169 @@
 * {
     box-sizing: border-box;
 }
+
+html,body {
+    margin: 0;
+    background-color: #b2c7d9;
+    height: 100%;
+    overflow: hidden;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+p {
+    margin: 0;
+}
+
+.chatting_date,
+.chatting_friend_name,
+.chatting_time {
+    font-size: 11px;
+}
+
+.chatting_navbar {
+    background-color: #a9bdce;
+    padding: 8px 10px;
+}
+
+.chatting_navbar_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.chatting_navbar_icon {
+    padding-left: 0px;
+    margin: 0;
+}
+
+.chatting_navbar_icon {
+    display: flex;
+}
+
+.chatting_navbar_search {
+    margin-right: 10px;
+}
+
+.chatting_main {
+    margin: 0 10px;
+}
+
+.chatting_date {
+    margin: 10px 0;
+}
+
+.chatting_friend_image img {
+    border-radius: 40%;
+}
+
+.chatting_friend_name {
+    margin-bottom: 5px;
+}
+
+.chatting_freind_contents {
+    margin: 0 5px;
+}
+
+.chatting_date {
+    text-align: center;
+}
+
+.chatting_friend {
+    display: flex;    
+}
+
+.chatting_friend_talk {    
+    background-color: #ffff;
+}
+
+.chatting_friend_header {
+    border-radius: 8px 8px 0 0;
+    padding: 8px 8px;
+    background-color: #ffe500;
+    font-weight: 600;
+}
+
+.chatting_friend_talk,
+.chatting_me_talk {
+    border-radius: 8px;
+}
+
+.chatting_friend_talk_section,
+.chatting_me_talk {
+    max-width: 15em;
+    padding: 8px 8px;       
+}
+
+.chatting_time {
+    display: flex;
+    align-items: flex-end;    
+}
+
+.chatting_me {
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 0;
+}
+
+.chatting_me_talk {
+    margin-left: 5px;
+    background-color: #ffe500;
+}
+
+.chatting_footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;    
+}
+
+.chatting_questions {
+    background-color: #ffff;
+    border-radius: 10px 10px 0 0;
+    padding-left: 10px;
+    transition: ease 300ms;
+    transform: translateY(113px); 
+}
+
+.chatting_questions:hover {
+    transform: translateY(0);
+}
+
+.chatting_questions_bar {
+    text-align: center;
+    color: gray;
+}
+
+.chatting_questions_list li {
+    margin-top: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.chatting_footer_chat_section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    background: #a9bdce;
+}
+
+.chatting_chat_add {
+    margin-right: 5px;
+    color: gray;
+}
+
+.chatting_chat {
+    width: 100%;
+    border: 1px solid;
+    border-radius: 5px;    
+    color: gray;
+    margin: 5px 0;
+}
