@@ -1,6 +1,5 @@
 'use strict';
 
-
 const dateTitle = document.querySelector('.chatting_date');     
 
 let time = document.querySelector('.chatting_time');
@@ -44,7 +43,6 @@ const questionContainer = document.querySelector('.chatting_questions_list'),
 questionList = questionContainer.querySelectorAll('li');
 
 const audio = new Audio('카톡.mp3');
-
 
 // 나의 질문 톡
 function myQuestion(question) {
