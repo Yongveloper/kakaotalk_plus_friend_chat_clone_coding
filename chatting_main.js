@@ -1,28 +1,30 @@
 'use strict';
 
 
-const dateContainer = document.querySelector('.chatting_date'),
-      dateTitle = dateContainer.querySelector('span');
+const dateTitle = document.querySelector('.chatting_date');     
 
-const time = document.querySelector('.chatting_time');
+let time = document.querySelector('.chatting_time');
 
-const newDate = new Date(),
-      year = newDate.getFullYear(),
-      month = newDate.getMonth(),
-      date = newDate.getDate(),
-      day = newDate.getDay(),
-      week = new Array ('일','월','화','수','목','금','토'),
-      minutes = newDate.getMinutes();
+let newDate = new Date();           
 
 // 타이틀 날짜 받아오기
 function getDate() {
+    const year = newDate.getFullYear(),
+      month = newDate.getMonth(),
+      date = newDate.getDate(),
+      day = newDate.getDay(),
+      week = new Array ('일','월','화','수','목','금','토');
+
     dateTitle.innerText = `${year}년 ${month+1}월 ${date}일 ${week[day]}요일`;
 }
 getDate();
 
 // 톡 시간(현재시간) 받아오기
 function getTime() {
-    let hours = newDate.getHours();
+    newDate = new Date();
+    let hours = newDate.getHours(),
+         minutes = newDate.getMinutes();    
+
     if(hours > 12) {
         hours = hours - 12;
         time.innerText = 
@@ -41,6 +43,9 @@ const mainContainer = document.querySelector('.chatting_main_container');
 const questionContainer = document.querySelector('.chatting_questions_list'),
 questionList = questionContainer.querySelectorAll('li');
 
+const audio = new Audio('카톡.mp3');
+
+
 // 나의 질문 톡
 function myQuestion(question) {
     let newDiv = document.createElement("div");
@@ -51,10 +56,13 @@ function myQuestion(question) {
         00:00
      </div>
      <div class="chatting_me_talk">
-      <div class="chatting_me_talk_section">
+     <div class="chatting_me_talk_section">
         <p>${question}</p>
     </div>
     </div>`;
+    
+    time = newDiv.querySelector('.chatting_time');    
+    getTime();
 }
 // 깐돌이의 답변
 function friendAnswer(answer) {
@@ -80,9 +88,14 @@ function friendAnswer(answer) {
         </div>                
     </div>
     <div class="chatting_time">
-       오후 8:23
+       00:00
     </div>
 </div>`;
+
+time = newDiv.querySelector('.chatting_time');    
+getTime();
+
+audio.play(); //답변과 동시에 카톡알림음
 }
 // 질문 리스트 클릭시 
 function questionAnswer() {
@@ -90,7 +103,7 @@ let question = this.className;
 switch (question) {
     case 'question_birthday' :
         myQuestion('깐돌이의 생일은 언제예요??');
-        setTimeout(friendAnswer,1000,'깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!');        
+        setTimeout(friendAnswer,1000,'깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!');       
         break;
     case 'question_birth_place' :
         myQuestion('깐돌이는 어디서 태어났어용??');
