@@ -9,7 +9,7 @@ html,body {
 
 body {
     background-color: #b2c7d9;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: 'Gothic A1', sans-serif;
     padding-top: 36px;
 }
@@ -51,8 +51,7 @@ i {
     align-items: center;    
 }
 
-.chatting_navbar_icon {
-    padding-left: 0px;
+.chatting_navbar_icon {    
     margin: 0;
 }
 
@@ -65,6 +64,7 @@ i {
 }
 
 .chatting_main_container {
+    padding-bottom: 80px;
     margin: 0 10px;
 }
 
@@ -139,7 +139,14 @@ i {
     margin: 10px 0;
 }
 
-.chatting_friend_image img {
+.chatting_friend {
+    margin-bottom: 10px;
+}
+
+.chatting_friend_image img,
+.chatting_menu_profile img {
+    width: 32px;
+    height: 32px;
     border-radius: 40%;
 }
 
@@ -149,6 +156,10 @@ i {
 
 .chatting_freind_contents {
     margin: 0 5px;
+}
+
+.chatting_friend_talk_section img {
+    width: 100%;
 }
 
 .chatting_date {
@@ -177,7 +188,7 @@ i {
 
 .chatting_friend_talk_section,
 .chatting_me_talk {
-    max-width: 15em;
+    max-width: 240px;
     padding: 8px 8px;       
 }
 
@@ -208,7 +219,7 @@ i {
     border-radius: 10px 10px 0 0;    
     padding: 0 8px 10px 10px;
     transition: all 300ms ease;
-    transform: translateY(113px);
+    transform: translateY(145px);
 }
 
 .chatting_questions_container:hover {
