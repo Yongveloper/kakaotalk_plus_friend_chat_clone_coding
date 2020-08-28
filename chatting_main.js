@@ -44,6 +44,12 @@ questionList = questionContainer.querySelectorAll('li');
 
 const audio = new Audio('카톡.mp3');
 
+// 카톡 대화시 스크롤 최하로 이동
+function scrollDowun() {
+    let scrollHeight = document.body.scrollHeight;  
+    window.scrollTo(0, scrollHeight);
+}    
+
 // 나의 질문 톡
 function myQuestion(question) {
     let newDiv = document.createElement("div");
@@ -60,7 +66,9 @@ function myQuestion(question) {
     </div>`;
     
     time = newDiv.querySelector('.chatting_time');    
-    getTime();
+    getTime(); //채팅시간(현재 시간) 받아오기
+
+    scrollDowun(); //스크롤 이동
 }
 // 깐돌이의 답변
 function friendAnswer(answer) {
@@ -90,10 +98,12 @@ function friendAnswer(answer) {
     </div>
 </div>`;
 
-time = newDiv.querySelector('.chatting_time');    
-getTime();
+    time = newDiv.querySelector('.chatting_time');    
+    getTime(); //채팅 시간(현재 시간) 받아오기
 
-audio.play(); //답변과 동시에 카톡알림음
+    audio.play(); //답변과 동시에 카톡알림음
+
+    scrollDowun(); //스크롤 이동
 }
 // 질문 리스트 클릭시 
 function questionAnswer() {
@@ -126,6 +136,7 @@ switch (question) {
         setTimeout(friendAnswer,3500,'우리 깐돌이 정말 귀엽고 이쁘죠!?');
         break;
 }
+
 };
 
 questionList.forEach(questionList => questionList.addEventListener('click', questionAnswer));

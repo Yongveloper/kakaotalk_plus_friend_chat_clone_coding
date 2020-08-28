@@ -51,6 +51,10 @@ i {
     align-items: center;    
 }
 
+.chatting_navbar_title {
+    margin-left: 25px;
+}
+
 .chatting_navbar_icon {    
     margin: 0;
 }
