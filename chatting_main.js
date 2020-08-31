@@ -107,7 +107,7 @@ function friendAnswer(answer) {
 }
 // 질문 리스트 클릭시 
 function questionAnswer() {
-let question = this.className;
+const question = this.className;
 switch (question) {
     case 'question_birthday' :
         myQuestion('깐돌이의 생일은 언제예요??');
@@ -136,7 +136,6 @@ switch (question) {
         setTimeout(friendAnswer,3500,'우리 깐돌이 정말 귀엽고 이쁘죠!?');
         break;
 }
-
 };
 
 questionList.forEach(questionList => questionList.addEventListener('click', questionAnswer));
