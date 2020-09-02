@@ -46,9 +46,14 @@ const audio = new Audio('카톡.mp3');
 
 // 카톡 대화시 스크롤 최하로 이동
 function scrollDowun() {
-    let scrollHeight = document.body.scrollHeight;  
+    const scrollHeight = document.body.scrollHeight;  
     window.scrollTo(0, scrollHeight);
 }    
+// 채팅 시간 실시간으로 받기
+function chatTimeHandler(div) {
+    time = div.querySelector('.chatting_time');    
+    getTime(); 
+}
 
 // 나의 질문 톡
 function myQuestion(question) {
@@ -65,9 +70,7 @@ function myQuestion(question) {
     </div>
     </div>`;
     
-    time = newDiv.querySelector('.chatting_time');    
-    getTime(); //채팅시간(현재 시간) 받아오기
-
+    chatTimeHandler(newDiv); //채팅 시간 실시간 받기
     scrollDowun(); //스크롤 이동
 }
 // 깐돌이의 답변
@@ -97,13 +100,9 @@ function friendAnswer(answer) {
        00:00
     </div>
 </div>`;
-
-    time = newDiv.querySelector('.chatting_time');    
-    getTime(); //채팅 시간(현재 시간) 받아오기
-
-    audio.play(); //답변과 동시에 카톡알림음
-
-    scrollDowun(); //스크롤 이동
+chatTimeHandler(newDiv); //채팅 시간 실간 받기
+audio.play(); //답변과 동시에 카톡알림음
+scrollDowun(); //스크롤 이동
 }
 // 질문 리스트 클릭시 
 function questionAnswer() {
