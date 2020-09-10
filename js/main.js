@@ -40,8 +40,22 @@ const questionContainer = document.querySelector('.chatting_questions_list'),
     questionList = questionContainer.querySelectorAll('li');
 const audio = new Audio('카톡.mp3');
 let newDiv;
+const questionBirthday = '깐돌이의 생일은 언제예요??',
+    questionPlace = '깐돌이는 어디서 태어났어용??',
+    questionFood = '깐돌이가 좋아하는 음식은 뭔가요!!??',
+    questionTime = '깐돌이가 좋아하는 시간은 언제죠??',
+    questionWeight = '깐돌이의 몸무게는 몇 키로인가요??',
+    questionPhoto = '깐돌이 사진 좀 보여주세요ㅎㅎ';
+const answerBirthday = '깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!',
+    answerPlace = '깐돌이는 경기도 수원시 팔달구 화서동에서 이쁘게 잘 태어났습니다~ 수원견!',
+    answerFood = '깐돌이는 천하장사 소세지 정말 너무 좋아해요~<br>그래서 까달라고 갖고 올 때도 있고, 쌀튀밥이라는 간식도 정말 좋아한답니다.^^<br>그리고 사람음식도 엄청 좋아했는데 이제는 절대 주지 않고 있어요.',
+    answerTime = '깐돌이가 좋아하는 시간은 역시 산책시간이겠죠?^^<br>그리고 형아가 인형가지고 놀아줄 때도 정말 즐겁게 지칠줄 모르고 잘 놀아요!',
+    answerWeight = '깐돌이의 몸무게는 3.8kg 이에요.<br>깐돌이가 젊었을 때는 4.5kg 까지 나갔었답니다:)',
+    answerPhoto1 = '<img src="images/깐돌사진1.jpeg" />',
+    answerPhoto2 = '<img src="images/깐돌사진2.jpeg" />',
+    answerPhoto3 = '우리 깐돌이 정말 귀엽고 이쁘죠!?';
 
-// 카톡 대화시 스크롤 최하로 이동
+// 톡 도착시 스크롤 최하로 이동
 function scrollDowun() {
     const scrollHeight = document.body.scrollHeight;  
     window.scrollTo(0, scrollHeight);
@@ -67,7 +81,7 @@ function myQuestion(question) {
     </div>`;
     return newDiv;
 }
-
+// 깐돌이 답변
 function friendsAnswer(answer) {
     newDiv = document.createElement("div");
     newDiv.classList.add('chatting_friend');
@@ -111,32 +125,33 @@ function friendsSay(answer) {
 // 질문 리스트 클릭시 
 function questionAnswer() {
 const question = this.className;
+
 switch (question) {
     case 'question_birthday' :
-        iSay('깐돌이의 생일은 언제예요??');
-        setTimeout(friendsSay,1000,'깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!');       
+        iSay(questionBirthday);
+        setTimeout(friendsSay,1000,answerBirthday);       
         break;
     case 'question_birth_place' :
-        iSay('깐돌이는 어디서 태어났어용??');
-        setTimeout(friendsSay,1000,'깐돌이는 경기도 수원시 팔달구 화서동에서 이쁘게 잘 태어났습니다~ 수원견!');
+        iSay(questionPlace);
+        setTimeout(friendsSay,1000,answerPlace);
         break;
     case 'question_favorite_food' :
-        iSay('깐돌이가 좋아하는 음식은 뭔가요!!??');
-        setTimeout(friendsSay,1000,'깐돌이는 천하장사 소세지 정말 너무 좋아해요~<br>그래서 까달라고 갖고 올 때도 있고, 쌀튀밥이라는 간식도 정말 좋아한답니다.^^<br>그리고 사람음식도 엄청 좋아했는데 이제는 절대 주지 않고 있어요.');
+        iSay(questionFood);
+        setTimeout(friendsSay,1000,answerFood);
         break;
     case 'question_favorite_time' :
-        iSay('깐돌이가 좋아하는 시간은 언제죠??');
-        setTimeout(friendsSay,1000,'깐돌이가 좋아하는 시간은 역시 산책시간이겠죠?^^<br>그리고 형아가 인형가지고 놀아줄 때도 정말 즐겁게 지칠줄 모르고 잘 놀아요!');
+        iSay(questionTime);
+        setTimeout(friendsSay,1000,answerTime);
         break;
     case 'question_weight' :
-        iSay('깐돌이의 몸무게는 몇 키로인가요??');
-        setTimeout(friendsSay,1000,'깐돌이의 몸무게는 3.8kg 이에요.<br>깐돌이가 젊었을 때는 4.5kg 까지 나갔었답니다:)'); 
+        iSay(questionWeight);
+        setTimeout(friendsSay,1000,answerWeight); 
         break;
     case 'question_photo' :
-        iSay('깐돌이 사진 좀 보여주세요ㅎㅎ');
-        setTimeout(friendsSay,1000,'<img src="images/깐돌사진1.jpeg" />');
-        setTimeout(friendsSay,2000,'<img src="images/깐돌사진2.jpeg" />');
-        setTimeout(friendsSay,3500,'우리 깐돌이 정말 귀엽고 이쁘죠!?');
+        iSay(questionPhoto);
+        setTimeout(friendsSay,1000,answerPhoto1);
+        setTimeout(friendsSay,2000,answerPhoto2);
+        setTimeout(friendsSay,3500,answerPhoto3);
         break;
 }
 };
