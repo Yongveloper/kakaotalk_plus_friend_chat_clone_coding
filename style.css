@@ -103,8 +103,7 @@ i {
     top: 0;    
     right: -100%;
     transition: all 360ms ease;
-    z-index: 2;
-    display: flex;
+    z-index: 2;    
     flex-direction: column;
     justify-content: space-between;
     width: 80%;
@@ -112,11 +111,8 @@ i {
     background-color: var(--color-sky);     
 }
 
-.menu_background_show{
+.show{
     display: flex;
-}
-
-.menu_contents_show {        
     right: 0;
 }
 
