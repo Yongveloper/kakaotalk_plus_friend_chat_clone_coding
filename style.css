@@ -1,303 +1,302 @@
 :root {
-    /* Color */
-    --color-sky: #a9bdce;
-    --color-light-sky:#b2c7d9;
-    --color-gray: gray;
-    --color-light-gray: #c5cad4;
-    --color-white: #ffff;
-    --color-yellow: #ffe500;
+  /* Color */
+  --color-sky: #a9bdce;
+  --color-light-sky: #b2c7d9;
+  --color-gray: gray;
+  --color-light-gray: #c5cad4;
+  --color-white: #ffff;
+  --color-yellow: #ffe500;
 }
 
 /* Universal tags */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;        
-    height: 100%;
-    background-color: var(--color-light-sky);
-    overflow-x: hidden;
-    font-family: 'Gothic A1', sans-serif;
-    padding-top: 36px;
+  margin: 0;
+  height: 100%;
+  background-color: var(--color-light-sky);
+  overflow-x: hidden;
+  font-family: "Gothic A1", sans-serif;
+  padding-top: 36px;
 }
 
 ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 i {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .chatting_date,
 .chatting_friend_name,
 .chatting_time {
-    font-size: 11px;
+  font-size: 11px;
 }
 
 /* Navbar */
 .chatting_navbar {
-    position: fixed;
-    width: 100%;
-    top: 0;    
-    background-color: var(--color-sky);
-    padding: 8px 10px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: var(--color-sky);
+  padding: 8px 10px;
 }
 
 .chatting_navbar_section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .chatting_navbar_title {
-    margin-left: 25px;
-}
-
-.chatting_navbar_icon {    
-    margin: 0;
+  margin-left: 25px;
 }
 
 .chatting_navbar_icon {
-    display: flex;
+  margin: 0;
+}
+
+.chatting_navbar_icon {
+  display: flex;
 }
 
 .chatting_navbar_search {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .chatting_main_container {
-    padding-bottom: 80px;
-    margin: 0 10px;
+  padding-bottom: 80px;
+  margin: 0 10px;
 }
 
 /* Menu */
 .chatting_menu {
-    display: none;
-    flex-direction: row-reverse; 
-    position: fixed; 
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%;         
-    background-color: rgba(0,0,0,0.4);
-    font-weight: 600; 
+  display: none;
+  flex-direction: row-reverse;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-weight: 600;
 }
 
 .chatting_menu_content {
-    position: fixed;
-    top: 0;    
-    right: -100%;
-    transition: all 360ms ease;
-    z-index: 2;    
-    flex-direction: column;
-    justify-content: space-between;
-    width: 80%;
-    height: 100%;
-    background-color: var(--color-sky);     
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: all 360ms ease;
+  z-index: 2;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  height: 100%;
+  background-color: var(--color-sky);
 }
 
-.show{
-    display: flex;
-    right: 0;
+.show {
+  display: flex;
+  right: 0;
 }
 
 .chatting_menu_list {
-    padding: 10px; 
+  padding: 10px;
 }
 
 .chatting_menu_profile {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .chatting_menu_profile img {
-    border-radius: 10px;
-    margin-right: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
 .chatting_menu_icons_container {
-    display: flex;
-    justify-content: space-between;  
-    background-color: var(--color-light-sky);
-    border-top: gray solid 1px;
-    padding: 10px;     
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--color-light-sky);
+  border-top: gray solid 1px;
+  padding: 10px;
 }
 
-.chatting_menu_icon {    
-    display: flex;
-    
+.chatting_menu_icon {
+  display: flex;
 }
 
 .chatting_menu_icon li {
-    margin-left: 13px;
+  margin-left: 13px;
 }
 
 /* Contents */
 .chatting_date {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .chatting_friend {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .chatting_friend_image img,
 .chatting_menu_profile img {
-    width: 32px;
-    height: 32px;
-    border-radius: 40%;
+  width: 32px;
+  height: 32px;
+  border-radius: 40%;
 }
 
 .chatting_friend_name {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .chatting_freind_contents {
-    margin: 0 5px;
+  margin: 0 5px;
 }
 
 .chatting_friend_talk_section img {
-    width: 100%;
+  width: 100%;
 }
 
 .chatting_date {
-    text-align: center;
+  text-align: center;
 }
 
 .chatting_friend {
-    display: flex;    
+  display: flex;
 }
 
-.chatting_friend_talk {    
-    background-color: var(--color-white);
+.chatting_friend_talk {
+  background-color: var(--color-white);
 }
 
 .chatting_friend_header {
-    border-radius: 8px 8px 0 0;
-    padding: 8px 8px;
-    background-color: var(--color-yellow);
-    font-weight: 600;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 8px;
+  background-color: var(--color-yellow);
+  font-weight: 600;
 }
 
 .chatting_friend_talk,
 .chatting_me_talk {
-    border-radius: 8px;
+  border-radius: 8px;
 }
 
 .chatting_friend_talk_section,
 .chatting_me_talk {
-    max-width: 240px;
-    padding: 8px 8px;       
+  max-width: 240px;
+  padding: 8px 8px;
 }
 
 .chatting_time {
-    display: flex;
-    align-items: flex-end;    
+  display: flex;
+  align-items: flex-end;
 }
 
 .chatting_me {
-    display: flex;
-    justify-content: flex-end;
-    margin: 15px 0;
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px 0;
 }
 
 .chatting_me_talk {
-    margin-left: 5px;
-    background-color: var(--color-yellow);
+  margin-left: 5px;
+  background-color: var(--color-yellow);
 }
 
 /* Footer */
 .chatting_footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;    
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 .chatting_questions_container {
-    background-color: var(--color-white);
-    border-radius: 10px 10px 0 0;    
-    padding: 0 8px 10px 10px;
-    transition: all 300ms ease;
-    transform: translateY(145px);
+  background-color: var(--color-white);
+  border-radius: 10px 10px 0 0;
+  padding: 0 8px 10px 10px;
+  transition: all 300ms ease;
+  transform: translateY(145px);
 }
 
 .chatting_questions_container:hover {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 .chatting_questions_bar {
-    text-align: center;
-    color: gray;
+  text-align: center;
+  color: gray;
 }
 
 .chatting_questions_list li {
-    margin-top: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 100ms ease;
+  margin-top: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 100ms ease;
 }
 
 .chatting_questions_list li:hover {
-    background-color: var(--color-light-gray);
-    border-radius: 5px;
+  background-color: var(--color-light-gray);
+  border-radius: 5px;
 }
 
 .chatting_footer_chat_section {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
-    background: var(--color-sky);
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background: var(--color-sky);
 }
 
 .chatting_chat_add {
-    margin-right: 5px;
-    color: var(--color-gray);
+  margin-right: 5px;
+  color: var(--color-gray);
 }
 
 .chatting_chat {
-    width: 100%;
-    border: 1px solid;
-    border-radius: 5px;    
-    color: var(--color-gray);
-    margin: 5px 0;
+  width: 100%;
+  border: 1px solid;
+  border-radius: 5px;
+  color: var(--color-gray);
+  margin: 5px 0;
 }
 
 .screen {
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: var(--color-yellow);    
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    color: black;
-    font-size: 30px;
-    text-align: center;
-    line-height: 1.5;            
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--color-yellow);
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: black;
+  font-size: 30px;
+  text-align: center;
+  line-height: 1.5;
 }
 
 @media screen and (min-width: 769px) {
-    body {
-        overflow: hidden;
-    }
-    .screen {
-        display: flex;
-    }
+  body {
+    overflow: hidden;
+  }
+  .screen {
+    display: flex;
+  }
 }
