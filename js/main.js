@@ -40,27 +40,29 @@ getTime(time);
 const mainContainer = document.querySelector(".chatting_main_container");
 const questionContainer = document.querySelector(".chatting_questions_list"),
   questionList = questionContainer.querySelectorAll("li");
+
 const audio = new Audio("카톡.mp3");
+
 let newDiv;
-const questionBirthday = "깐돌이의 생일은 언제예요??",
-  questionPlace = "깐돌이는 어디서 태어났어용??",
-  questionFood = "깐돌이가 좋아하는 음식은 뭔가요!!??",
-  questionTime = "깐돌이가 좋아하는 시간은 언제죠??",
-  questionWeight = "깐돌이의 몸무게는 몇 키로인가요??",
-  questionPhoto = "깐돌이 사진 좀 보여주세요ㅎㅎ";
-const answerBirthday =
-    "깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!",
-  answerPlace =
-    "깐돌이는 경기도 수원시 팔달구 화서동에서 이쁘게 잘 태어났습니다~ 수원견!",
-  answerFood =
-    "깐돌이는 천하장사 소세지 정말 너무 좋아해요~<br>그래서 까달라고 갖고 올 때도 있고, 쌀튀밥이라는 간식도 정말 좋아한답니다.^^<br>그리고 사람음식도 엄청 좋아했는데 이제는 절대 주지 않고 있어요.",
-  answerTime =
-    "깐돌이가 좋아하는 시간은 역시 산책시간이겠죠?^^<br>그리고 형아가 인형가지고 놀아줄 때도 정말 즐겁게 지칠줄 모르고 잘 놀아요!",
-  answerWeight =
-    "깐돌이의 몸무게는 3.8kg 이에요.<br>깐돌이가 젊었을 때는 4.5kg 까지 나갔었답니다:)",
-  answerPhoto1 = '<img src="images/깐돌사진1.jpeg" />',
-  answerPhoto2 = '<img src="images/깐돌사진2.jpeg" />',
-  answerPhoto3 = "우리 깐돌이 정말 귀엽고 이쁘죠!?";
+
+const questions = {
+  birthday: "깐돌이의 생일은 언제예요??",
+  place: "깐돌이는 어디서 태어났어용??",
+  food: "깐돌이가 좋아하는 음식은 뭔가요!!??",
+  time: "깐돌이가 좋아하는 시간은 언제죠??",
+  weight: "깐돌이의 몸무게는 몇 키로인가요??",
+  photo: "깐돌이 사진 좀 보여주세요ㅎㅎ"
+};
+const answers = {
+  birthday: "깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!",
+  place: "깐돌이는 경기도 수원시 팔달구 화서동에서 이쁘게 잘 태어났습니다~ 수원견!",
+  food: "깐돌이는 천하장사 소세지 정말 너무 좋아해요~<br>그래서 까달라고 갖고 올 때도 있고, 쌀튀밥이라는 간식도 정말 좋아한답니다.^^<br>그리고 사람음식도 엄청 좋아했는데 이제는 절대 주지 않고 있어요.",
+  time: "깐돌이가 좋아하는 시간은 역시 산책시간이겠죠?^^<br>그리고 형아가 인형가지고 놀아줄 때도 정말 즐겁게 지칠줄 모르고 잘 놀아요!",
+  weight: "깐돌이의 몸무게는 3.8kg 이에요.<br>깐돌이가 젊었을 때는 4.5kg 까지 나갔었답니다:)",
+  photo1: '<img src="images/깐돌사진1.jpeg" />',
+  photo2: '<img src="images/깐돌사진2.jpeg" />',
+  photo3: "우리 깐돌이 정말 귀엽고 이쁘죠!?"
+};
 
 // 톡 도착시 스크롤 최하로 이동
 function scrollDowun() {
@@ -133,34 +135,32 @@ function questionAnswer() {
 
   switch (question) {
     case "question_birthday":
-      iSay(questionBirthday);
-      setTimeout(friendsSay, 1000, answerBirthday);
+      iSay(questions.birthday);
+      setTimeout(friendsSay, 1000, answers.birthday);
       break;
     case "question_birth_place":
-      iSay(questionPlace);
-      setTimeout(friendsSay, 1000, answerPlace);
+      iSay(questions.place);
+      setTimeout(friendsSay, 1000, answers.place);
       break;
     case "question_favorite_food":
-      iSay(questionFood);
-      setTimeout(friendsSay, 1000, answerFood);
+      iSay(questions.food);
+      setTimeout(friendsSay, 1000, answers.food);
       break;
     case "question_favorite_time":
-      iSay(questionTime);
-      setTimeout(friendsSay, 1000, answerTime);
+      iSay(questions.time);
+      setTimeout(friendsSay, 1000, answers.time);
       break;
     case "question_weight":
-      iSay(questionWeight);
-      setTimeout(friendsSay, 1000, answerWeight);
+      iSay(questions.weight);
+      setTimeout(friendsSay, 1000, answers.weight);
       break;
     case "question_photo":
-      iSay(questionPhoto);
-      setTimeout(friendsSay, 1000, answerPhoto1);
-      setTimeout(friendsSay, 2000, answerPhoto2);
-      setTimeout(friendsSay, 3500, answerPhoto3);
+      iSay(questions.photo);
+      setTimeout(friendsSay, 1000, answers.photo1);
+      setTimeout(friendsSay, 2000, answers.photo2);
+      setTimeout(friendsSay, 3500, answers.photo3);
       break;
   }
 }
 
-questionList.forEach((questionList) =>
-  questionList.addEventListener("click", questionAnswer)
-);
+questionList.forEach(questionList => questionList.addEventListener("click", questionAnswer));

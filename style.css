@@ -233,9 +233,9 @@ i {
   transform: translateY(145px);
 }
 
-.chatting_questions_container:hover {
+/* .chatting_questions_container:hover {
   transform: translateY(0);
-}
+} */
 
 .chatting_questions_bar {
   text-align: center;
