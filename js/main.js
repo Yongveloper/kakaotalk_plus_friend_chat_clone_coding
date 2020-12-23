@@ -24,14 +24,10 @@ function getTime(time) {
 
   if (hours > 12) {
     hours = hours - 12;
-    time.innerText = `오후 ${hours < 10 ? `${hours}` : hours}:${
-      minutes < 10 ? `0${minutes}` : minutes
-    }`;
+    time.innerText = `오후 ${hours < 10 ? `${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
   } else {
     hours = hours ? hours : 12;
-    time.innerText = `오전 ${hours < 10 ? `${hours}` : hours}:${
-      minutes < 10 ? `0${minutes}` : minutes
-    }`;
+    time.innerText = `오전 ${hours < 10 ? `${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
   }
 }
 
@@ -53,16 +49,13 @@ const questions = {
   photo: '깐돌이 사진 좀 보여주세요ㅎㅎ',
 };
 const answers = {
-  birthday:
-    '깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!',
-  place:
-    '깐돌이는 경기도 수원시 팔달구 화서동에서 이쁘게 잘 태어났습니다~ 수원견!',
+  birthday: '깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!',
+  place: '깐돌이는 경기도 수원시 팔달구 화서동에서 이쁘게 잘 태어났습니다~ 수원견!',
   food:
     '깐돌이는 천하장사 소세지 정말 너무 좋아해요~<br>그래서 까달라고 갖고 올 때도 있고, 쌀튀밥이라는 간식도 정말 좋아한답니다.^^<br>그리고 사람음식도 엄청 좋아했는데 이제는 절대 주지 않고 있어요.',
   time:
     '깐돌이가 좋아하는 시간은 역시 산책시간이겠죠?^^<br>그리고 형아가 인형가지고 놀아줄 때도 정말 즐겁게 지칠줄 모르고 잘 놀아요!',
-  weight:
-    '깐돌이의 몸무게는 3.8kg 이에요.<br>깐돌이가 젊었을 때는 4.5kg 까지 나갔었답니다:)',
+  weight: '깐돌이의 몸무게는 3.8kg 이에요.<br>깐돌이가 젊었을 때는 4.5kg 까지 나갔었답니다:)',
   photo1: '<img src="images/깐돌사진1.jpeg" />',
   photo2: '<img src="images/깐돌사진2.jpeg" />',
   photo3: '우리 깐돌이 정말 귀엽고 이쁘죠!?',
@@ -170,9 +163,7 @@ function questionAnswer() {
 function init() {
   getDate();
   getTime(time);
-  questionList.forEach((questionList) =>
-    questionList.addEventListener('click', questionAnswer)
-  );
+  questionList.forEach((questionList) => questionList.addEventListener('click', questionAnswer));
 }
 
 init();
