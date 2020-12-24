@@ -18,7 +18,8 @@ body {
   height: 100%;
   background-color: var(--color-light-sky);
   overflow-x: hidden;
-  font-family: 'Gothic A1', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
   padding-top: 36px;
 }
 
@@ -66,9 +67,6 @@ i {
 
 .chatting_navbar_icon {
   margin: 0;
-}
-
-.chatting_navbar_icon {
   display: flex;
 }
 
@@ -108,7 +106,11 @@ i {
   background-color: var(--color-sky);
 }
 
-.show {
+.chatting_menu.show {
+  display: block;
+}
+
+.chatting_menu_content.show {
   display: flex;
   right: 0;
 }

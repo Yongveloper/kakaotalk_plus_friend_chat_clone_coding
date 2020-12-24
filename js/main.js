@@ -2,7 +2,8 @@
 
 // 날짜
 const dateTitle = document.querySelector('.chatting_date');
-let time = document.querySelector('.chatting_time');
+
+// let time = document.querySelector('.chatting_time');
 let newDate = new Date();
 
 // 타이틀 날짜 받아오기
@@ -35,10 +36,9 @@ function getTime(time) {
 const mainContainer = document.querySelector('.chatting_main_container');
 const questionContainer = document.querySelector('.chatting_questions_list'),
   questionList = questionContainer.querySelectorAll('li');
+const audio = new Audio('audio/카톡.mp3');
 
-const audio = new Audio('카톡.mp3');
-
-let newDiv;
+let newSection;
 
 const questions = {
   birthday: '깐돌이의 생일은 언제예요??',
@@ -49,6 +49,8 @@ const questions = {
   photo: '깐돌이 사진 좀 보여주세요ㅎㅎ',
 };
 const answers = {
+  greethings:
+    '[깐돌 고객센터] 깐돌이의 궁금한 점을 알려드립니다.<br /><br />깐돌이에 대해서 어떠한 것들이 궁금하신가요?',
   birthday: '깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!',
   place: '깐돌이는 경기도 수원시 팔달구 화서동에서 이쁘게 잘 태어났습니다~ 수원견!',
   food:
@@ -68,15 +70,15 @@ function scrollDowun() {
 }
 // 채팅 시간 실시간으로 받기
 function chatTimeHandler(div) {
-  time = div.querySelector('.chatting_time');
+  const time = div.querySelector('.chatting_time');
   getTime(time);
 }
 // 나의 질문 내용
 function myQuestion(question) {
-  newDiv = document.createElement('div');
-  newDiv.classList.add('chatting_me');
-  mainContainer.append(newDiv);
-  newDiv.innerHTML = `<div class="chatting_time">
+  newSection = document.createElement('section');
+  newSection.classList.add('chatting_me');
+  mainContainer.append(newSection);
+  newSection.innerHTML = `<div class="chatting_time">
       00:00
     </div>
     <div class="chatting_me_talk">
@@ -84,15 +86,15 @@ function myQuestion(question) {
       <p>${question}</p>
   </div>
   </div>`;
-  return newDiv;
+  return newSection;
 }
 // 깐돌이 답변
 function friendsAnswer(answer) {
-  newDiv = document.createElement('div');
-  newDiv.classList.add('chatting_friend');
-  mainContainer.append(newDiv);
-  newDiv.innerHTML = `<div class="chatting_friend_image">
-    <img src="images/깐돌프사.jpg" />
+  newSection = document.createElement('section');
+  newSection.classList.add('chatting_friend');
+  mainContainer.append(newSection);
+  newSection.innerHTML = `<div class="chatting_friend_image">
+    <img src="images/깐돌프사.jpg" alt="profile" />
   </div>
   <div class="chatting_freind_contents">
     <div class="chatting_friend_name">
@@ -110,19 +112,19 @@ function friendsAnswer(answer) {
   <div class="chatting_time">
     00:00
   </div>`;
-  return newDiv;
+  return newSection;
 }
 
 // 나의 톡
 function iSay(question) {
-  newDiv = myQuestion(question);
-  chatTimeHandler(newDiv); //채팅 시간 실시간 받기
+  newSection = myQuestion(question);
+  chatTimeHandler(newSection); //채팅 시간 실시간 받기
   scrollDowun(); //스크롤 이동
 }
 // 깐돌이 톡
 function friendsSay(answer) {
-  newDiv = friendsAnswer(answer);
-  chatTimeHandler(newDiv); //채팅 시간 실간 받기
+  newSection = friendsAnswer(answer);
+  chatTimeHandler(newSection); //채팅 시간 실간 받기
   audio.play(); //답변과 동시에 카톡알림음
   scrollDowun(); //스크롤 이동
 }
@@ -162,70 +164,8 @@ function questionAnswer() {
 
 function init() {
   getDate();
-  getTime(time);
+  setTimeout(friendsSay, 1000, answers.greethings);
   questionList.forEach((questionList) => questionList.addEventListener('click', questionAnswer));
 }
 
 init();
-
-// class QuestionAnswerHandler {
-//   constructor(question, answer) {
-//     this.question = question;
-//     this.answer = answer;
-//     this.init();
-//   }
-
-//   init() {
-//     this.mainContainer = document.querySelector(".chatting_main_container");
-//     this.questionContainer = document.querySelector(".chatting_questions_list");
-//     this.audio = new Audio("카톡.mp3");
-//     this.iSay();
-//     setTimeout(this.friendsSay, 1000);
-//   }
-
-//   iSay() {
-//     this.newDiv = document.createElement("div");
-//     this.newDiv.classList.add("chatting_me");
-//     this.mainContainer.append(newDiv);
-//     this.newDiv.innerHTML = `<div class="chatting_time">
-//         00:00
-//       </div>
-//       <div class="chatting_me_talk">
-//       <div class="chatting_me_talk_section">
-//         <p>${this.question}</p>
-//     </div>
-//     </div>`;
-//     chatTimeHandler(this.newDiv);
-//   }
-
-//   friendsSay() {
-//     this.newDiv = document.createElement("div");
-//     this.newDiv.classList.add("chatting_friend");
-//     this.mainContainer.append(newDiv);
-//     this.newDiv.innerHTML = `<div class="chatting_friend_image">
-//       <img src="images/깐돌프사.jpg" />
-//     </div>
-//     <div class="chatting_freind_contents">
-//       <div class="chatting_friend_name">
-//           깐돌 고객센터
-//       </div>
-//       <div class="chatting_friend_talk">
-//           <div class="chatting_friend_header">
-//               알림톡 도착
-//           </div>
-//           <div class="chatting_friend_talk_section">
-//               <p>${this.answer}</p>
-//           </div>
-//       </div>
-//     </div>
-//     <div class="chatting_time">
-//       00:00
-//     </div>`;
-//     chatTimeHandler(this.newDiv);
-//   }
-
-//   scrollDowun() {
-//     this.scrollHeight = document.body.scrollHeight;
-//     window.scrollTo(0, this.scrollHeight);
-//   }
-// }
