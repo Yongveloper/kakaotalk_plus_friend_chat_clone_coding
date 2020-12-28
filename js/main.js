@@ -18,7 +18,8 @@ function getDate() {
 }
 
 // 톡 시간(현재시간) 받아오기
-function getTime(time) {
+function getTime(section) {
+  const time = section.querySelector('.chatting_time');
   newDate = new Date();
   let hours = newDate.getHours(),
     minutes = newDate.getMinutes();
@@ -68,11 +69,7 @@ function scrollDowun() {
   const scrollHeight = document.body.scrollHeight;
   window.scrollTo(0, scrollHeight);
 }
-// 채팅 시간 실시간으로 받기
-function chatTimeHandler(div) {
-  const time = div.querySelector('.chatting_time');
-  getTime(time);
-}
+
 // 나의 질문 내용
 function myQuestion(question) {
   newSection = document.createElement('section');
@@ -117,14 +114,14 @@ function friendsAnswer(answer) {
 
 // 나의 톡
 function iSay(question) {
-  newSection = myQuestion(question);
-  chatTimeHandler(newSection); //채팅 시간 실시간 받기
+  const mySection = myQuestion(question);
+  getTime(mySection); //채팅 시간 실시간 받기
   scrollDowun(); //스크롤 이동
 }
 // 깐돌이 톡
 function friendsSay(answer) {
-  newSection = friendsAnswer(answer);
-  chatTimeHandler(newSection); //채팅 시간 실간 받기
+  const friendSection = friendsAnswer(answer);
+  getTime(friendSection); //채팅 시간 실간 받기
   audio.play(); //답변과 동시에 카톡알림음
   scrollDowun(); //스크롤 이동
 }
