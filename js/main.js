@@ -3,7 +3,6 @@
 // 날짜
 const dateTitle = document.querySelector('.chatting_date');
 
-// let time = document.querySelector('.chatting_time');
 let newDate = new Date();
 
 // 타이틀 날짜 받아오기
@@ -33,10 +32,11 @@ function getTime(section) {
   }
 }
 
+//
+
 // 질문 답변
 const mainContainer = document.querySelector('.chatting_main_container');
-const questionContainer = document.querySelector('.chatting_questions_list'),
-  questionList = questionContainer.querySelectorAll('li');
+const questionList = document.querySelector('.chatting_questions_list');
 const audio = new Audio('audio/카톡.mp3');
 
 let newSection;
@@ -86,7 +86,7 @@ function myQuestion(question) {
   return newSection;
 }
 // 깐돌이 답변
-function friendsAnswer(answer) {
+function answerFriend(answer) {
   newSection = document.createElement('section');
   newSection.classList.add('chatting_friend');
   mainContainer.append(newSection);
@@ -120,37 +120,37 @@ function iSay(question) {
 }
 // 깐돌이 톡
 function friendsSay(answer) {
-  const friendSection = friendsAnswer(answer);
+  const friendSection = answerFriend(answer);
   getTime(friendSection); //채팅 시간 실간 받기
   audio.play(); //답변과 동시에 카톡알림음
   scrollDowun(); //스크롤 이동
 }
 // 질문 리스트 클릭시
-function questionAnswer() {
-  const question = this.className;
+function questionAnswer(e) {
+  const question = e.target.dataset.value;
 
   switch (question) {
-    case 'question_birthday':
+    case 'birthday':
       iSay(questions.birthday);
       setTimeout(friendsSay, 1000, answers.birthday);
       break;
-    case 'question_birth_place':
+    case 'place-of-birth':
       iSay(questions.place);
       setTimeout(friendsSay, 1000, answers.place);
       break;
-    case 'question_favorite_food':
+    case 'favorite-food':
       iSay(questions.food);
       setTimeout(friendsSay, 1000, answers.food);
       break;
-    case 'question_favorite_time':
+    case 'favorite-time':
       iSay(questions.time);
       setTimeout(friendsSay, 1000, answers.time);
       break;
-    case 'question_weight':
+    case 'weight':
       iSay(questions.weight);
       setTimeout(friendsSay, 1000, answers.weight);
       break;
-    case 'question_photo':
+    case 'photo':
       iSay(questions.photo);
       setTimeout(friendsSay, 1000, answers.photo1);
       setTimeout(friendsSay, 2000, answers.photo2);
@@ -162,7 +162,7 @@ function questionAnswer() {
 function init() {
   getDate();
   setTimeout(friendsSay, 1000, answers.greethings);
-  questionList.forEach((questionList) => questionList.addEventListener('click', questionAnswer));
+  questionList.addEventListener('click', (e) => questionAnswer(e));
 }
 
 init();
