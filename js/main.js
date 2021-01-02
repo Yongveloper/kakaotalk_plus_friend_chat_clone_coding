@@ -1,17 +1,15 @@
 'use strict';
 
-// 날짜
-const dateTitle = document.querySelector('.chatting_date');
-
 let newDate = new Date();
 
 // 타이틀 날짜 받아오기
 function getDate() {
-  const year = newDate.getFullYear(),
-    month = newDate.getMonth(),
-    date = newDate.getDate(),
-    day = newDate.getDay(),
-    week = new Array('일', '월', '화', '수', '목', '금', '토');
+  const dateTitle = document.querySelector('.chatting_date');
+  const year = newDate.getFullYear();
+  const month = newDate.getMonth();
+  const date = newDate.getDate();
+  const day = newDate.getDay();
+  const week = new Array('일', '월', '화', '수', '목', '금', '토');
 
   dateTitle.innerText = `${year}년 ${month + 1}월 ${date}일 ${week[day]}요일`;
 }
@@ -31,16 +29,9 @@ function getTime(section) {
     time.innerText = `오전 ${hours < 10 ? `${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
   }
 }
-
 //
 
 // 질문 답변
-const mainContainer = document.querySelector('.chatting_main_container');
-const questionList = document.querySelector('.chatting_questions_list');
-const audio = new Audio('audio/카톡.mp3');
-
-let newSection;
-
 const questions = {
   birthday: '깐돌이의 생일은 언제예요??',
   place: '깐돌이는 어디서 태어났어용??',
@@ -67,102 +58,113 @@ const answers = {
 // 톡 도착시 스크롤 최하로 이동
 function scrollDowun() {
   const scrollHeight = document.body.scrollHeight;
-  window.scrollTo(0, scrollHeight);
+  scrollTo(0, scrollHeight);
 }
 
-// 나의 질문 내용
-function myQuestion(question) {
-  newSection = document.createElement('section');
-  newSection.classList.add('chatting_me');
-  mainContainer.append(newSection);
-  newSection.innerHTML = `<div class="chatting_time">
+function createMyHTMLString(question) {
+  return `
+  <div class="chatting_time">
       00:00
-    </div>
+  </div>
     <div class="chatting_me_talk">
     <div class="chatting_me_talk_section">
       <p>${question}</p>
   </div>
-  </div>`;
-  return newSection;
+  </div>
+  `;
 }
-// 깐돌이 답변
-function answerFriend(answer) {
-  newSection = document.createElement('section');
-  newSection.classList.add('chatting_friend');
-  mainContainer.append(newSection);
-  newSection.innerHTML = `<div class="chatting_friend_image">
+
+function createFriendHTMLString(answer) {
+  return `
+  <div class="chatting_friend_image">
     <img src="images/깐돌프사.jpg" alt="profile" />
   </div>
   <div class="chatting_freind_contents">
-    <div class="chatting_friend_name">
-        깐돌 고객센터
-    </div>
-    <div class="chatting_friend_talk">
-        <div class="chatting_friend_header">
-            알림톡 도착
-        </div>
-        <div class="chatting_friend_talk_section">
-            <p>${answer}</p>                        
-        </div>
-    </div>                
+  <div class="chatting_friend_name">
+    깐돌 고객센터
+  </div>
+  <div class="chatting_friend_talk">
+      <div class="chatting_friend_header">
+        알림톡 도착
+      </div>
+      <div class="chatting_friend_talk_section">
+        <p>${answer}</p>                        
+      </div>
+  </div>                
   </div>
   <div class="chatting_time">
     00:00
   </div>`;
+}
+
+function createSection(user, talk) {
+  const mainContainer = document.querySelector('.chatting_main_container');
+  const newSection = document.createElement('section');
+  mainContainer.append(newSection);
+  newSection.classList.add(user);
+  if (user === 'chatting_me') {
+    newSection.innerHTML = createMyHTMLString(talk);
+  } else {
+    newSection.innerHTML = createFriendHTMLString(talk);
+  }
   return newSection;
 }
 
 // 나의 톡
 function iSay(question) {
-  const mySection = myQuestion(question);
-  getTime(mySection); //채팅 시간 실시간 받기
-  scrollDowun(); //스크롤 이동
+  const me = 'chatting_me';
+  const mySection = createSection(me, question);
+  getTime(mySection);
+  scrollDowun();
 }
 // 깐돌이 톡
-function friendsSay(answer) {
-  const friendSection = answerFriend(answer);
-  getTime(friendSection); //채팅 시간 실간 받기
-  audio.play(); //답변과 동시에 카톡알림음
-  scrollDowun(); //스크롤 이동
+function friendSay(answer) {
+  const audio = new Audio('audio/카톡.mp3');
+  const friend = 'chatting_friend';
+  const friendSection = createSection(friend, answer);
+  getTime(friendSection);
+  audio.play();
+  scrollDowun();
 }
 // 질문 리스트 클릭시
-function questionAnswer(e) {
+function run(e) {
   const question = e.target.dataset.value;
 
   switch (question) {
     case 'birthday':
       iSay(questions.birthday);
-      setTimeout(friendsSay, 1000, answers.birthday);
+      setTimeout(friendSay, 1000, answers.birthday);
       break;
     case 'place-of-birth':
       iSay(questions.place);
-      setTimeout(friendsSay, 1000, answers.place);
+      setTimeout(friendSay, 1000, answers.place);
       break;
     case 'favorite-food':
       iSay(questions.food);
-      setTimeout(friendsSay, 1000, answers.food);
+      setTimeout(friendSay, 1000, answers.food);
       break;
     case 'favorite-time':
       iSay(questions.time);
-      setTimeout(friendsSay, 1000, answers.time);
+      setTimeout(friendSay, 1000, answers.time);
       break;
     case 'weight':
       iSay(questions.weight);
-      setTimeout(friendsSay, 1000, answers.weight);
+      setTimeout(friendSay, 1000, answers.weight);
       break;
     case 'photo':
       iSay(questions.photo);
-      setTimeout(friendsSay, 1000, answers.photo1);
-      setTimeout(friendsSay, 2000, answers.photo2);
-      setTimeout(friendsSay, 3500, answers.photo3);
+      setTimeout(friendSay, 1000, answers.photo1);
+      setTimeout(friendSay, 2000, answers.photo2);
+      setTimeout(friendSay, 3500, answers.photo3);
       break;
   }
 }
 
 function init() {
+  const questionList = document.querySelector('.chatting_questions_list');
   getDate();
-  setTimeout(friendsSay, 1000, answers.greethings);
-  questionList.addEventListener('click', (e) => questionAnswer(e));
+  setTimeout(friendSay, 1000, answers.greethings);
+  questionList.addEventListener('click', (e) => run(e));
 }
 
 init();
