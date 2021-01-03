@@ -9,7 +9,7 @@ function getDate() {
   const month = newDate.getMonth();
   const date = newDate.getDate();
   const day = newDate.getDay();
-  const week = new Array('일', '월', '화', '수', '목', '금', '토');
+  const week = ['일', '월', '화', '수', '목', '금', '토'];
 
   dateTitle.innerText = `${year}년 ${month + 1}월 ${date}일 ${week[day]}요일`;
 }
@@ -18,8 +18,8 @@ function getDate() {
 function getTime(section) {
   const time = section.querySelector('.chatting_time');
   newDate = new Date();
-  let hours = newDate.getHours(),
-    minutes = newDate.getMinutes();
+  let hours = newDate.getHours();
+  const minutes = newDate.getMinutes();
 
   if (hours > 12) {
     hours = hours - 12;
