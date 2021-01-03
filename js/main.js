@@ -100,13 +100,13 @@ function createFriendHTMLString(answer) {
 function createSection(user, talk) {
   const mainContainer = document.querySelector('.chatting_main_container');
   const newSection = document.createElement('section');
-  mainContainer.append(newSection);
   newSection.classList.add(user);
   if (user === 'chatting_me') {
     newSection.innerHTML = createMyHTMLString(talk);
   } else {
     newSection.innerHTML = createFriendHTMLString(talk);
   }
+  mainContainer.appendChild(newSection);
   return newSection;
 }
 
