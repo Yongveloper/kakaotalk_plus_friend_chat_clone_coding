@@ -50,9 +50,7 @@ const answers = {
   time:
     '깐돌이가 좋아하는 시간은 역시 산책시간이겠죠?^^<br>그리고 형아가 인형가지고 놀아줄 때도 정말 즐겁게 지칠줄 모르고 잘 놀아요!',
   weight: '깐돌이의 몸무게는 3.8kg 이에요.<br>깐돌이가 젊었을 때는 4.5kg 까지 나갔었답니다:)',
-  photo1: '<img src="images/깐돌사진1.jpeg" />',
-  photo2: '<img src="images/깐돌사진2.jpeg" />',
-  photo3: '우리 깐돌이 정말 귀엽고 이쁘죠!?',
+  photo: '<img src="images/깐돌사진1.jpeg" />',
 };
 
 // 톡 도착시 스크롤 최하로 이동
@@ -127,35 +125,17 @@ function friendSay(answer) {
   scrollDowun();
 }
 // 질문 리스트 클릭시
-function run(e) {
-  const question = e.target.dataset.value;
-
-  switch (question) {
+function converse(e) {
+  const type = e.target.dataset.type;
+  switch (type) {
     case 'birthday':
-      iSay(questions.birthday);
-      setTimeout(friendSay, 1000, answers.birthday);
-      break;
-    case 'place-of-birth':
-      iSay(questions.place);
-      setTimeout(friendSay, 1000, answers.place);
-      break;
-    case 'favorite-food':
-      iSay(questions.food);
-      setTimeout(friendSay, 1000, answers.food);
-      break;
-    case 'favorite-time':
-      iSay(questions.time);
-      setTimeout(friendSay, 1000, answers.time);
-      break;
+    case 'place':
+    case 'food':
+    case 'time':
     case 'weight':
-      iSay(questions.weight);
-      setTimeout(friendSay, 1000, answers.weight);
-      break;
     case 'photo':
-      iSay(questions.photo);
-      setTimeout(friendSay, 1000, answers.photo1);
-      setTimeout(friendSay, 2000, answers.photo2);
-      setTimeout(friendSay, 3500, answers.photo3);
+      iSay(questions[type]);
+      setTimeout(friendSay, 1000, answers[type]);
       break;
   }
 }
@@ -164,7 +144,7 @@ function init() {
   const questionList = document.querySelector('.chatting_questions_list');
   getDate();
   setTimeout(friendSay, 1000, answers.greethings);
-  questionList.addEventListener('click', (e) => run(e));
+  questionList.addEventListener('click', (e) => converse(e));
 }
 
 init();
