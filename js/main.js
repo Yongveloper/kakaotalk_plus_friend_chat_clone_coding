@@ -30,28 +30,12 @@ function getTime(section) {
   }
 }
 //
-
 // 질문 답변
-const questions = {
-  birthday: '깐돌이의 생일은 언제예요??',
-  place: '깐돌이는 어디서 태어났어용??',
-  food: '깐돌이가 좋아하는 음식은 뭔가요!!??',
-  time: '깐돌이가 좋아하는 시간은 언제죠??',
-  weight: '깐돌이의 몸무게는 몇 키로인가요??',
-  photo: '깐돌이 사진 좀 보여주세요ㅎㅎ',
-};
-const answers = {
-  greethings:
-    '[깐돌 고객센터] 깐돌이의 궁금한 점을 알려드립니다.<br /><br />깐돌이에 대해서 어떠한 것들이 궁금하신가요?',
-  birthday: '깐돌이의 생일은<br>2007년 10월 23일날 태어났습니다.^^<br>참고로 누나 몽실이가 있습니다!',
-  place: '깐돌이는 경기도 수원시 팔달구 화서동에서 이쁘게 잘 태어났습니다~ 수원견!',
-  food:
-    '깐돌이는 천하장사 소세지 정말 너무 좋아해요~<br>그래서 까달라고 갖고 올 때도 있고, 쌀튀밥이라는 간식도 정말 좋아한답니다.^^<br>그리고 사람음식도 엄청 좋아했는데 이제는 절대 주지 않고 있어요.',
-  time:
-    '깐돌이가 좋아하는 시간은 역시 산책시간이겠죠?^^<br>그리고 형아가 인형가지고 놀아줄 때도 정말 즐겁게 지칠줄 모르고 잘 놀아요!',
-  weight: '깐돌이의 몸무게는 3.8kg 이에요.<br>깐돌이가 젊었을 때는 4.5kg 까지 나갔었답니다:)',
-  photo: '<img src="images/깐돌사진1.jpeg" />',
-};
+//
+// JSON 데이터 받아오기
+function loadData() {
+  return fetch('data/data.json').then((response) => response.json());
+}
 
 // 톡 도착시 스크롤 최하로 이동
 function scrollDowun() {
@@ -66,7 +50,7 @@ function createMyHTMLString(question) {
   </div>
     <div class="chatting_me_talk">
     <div class="chatting_me_talk_section">
-      <p>${question}</p>
+      ${question}
   </div>
   </div>
   `;
@@ -86,7 +70,7 @@ function createFriendHTMLString(answer) {
         알림톡 도착
       </div>
       <div class="chatting_friend_talk_section">
-        <p>${answer}</p>                        
+        ${answer}                      
       </div>
   </div>                
   </div>
@@ -125,7 +109,7 @@ function friendSay(answer) {
   scrollDowun();
 }
 // 질문 리스트 클릭시
-function converse(e) {
+function converse(e, data) {
   const type = e.target.dataset.type;
   switch (type) {
     case 'birthday':
@@ -134,17 +118,21 @@ function converse(e) {
     case 'time':
     case 'weight':
     case 'photo':
-      iSay(questions[type]);
-      setTimeout(friendSay, 1000, answers[type]);
+      iSay(data.questions[type]);
+      setTimeout(friendSay, 1000, data.answers[type]);
       break;
   }
 }
 
-function init() {
+function setEventHandler(data) {
   const questionList = document.querySelector('.chatting_questions_list');
-  getDate();
-  setTimeout(friendSay, 1000, answers.greethings);
-  questionList.addEventListener('click', (e) => converse(e));
+  questionList.addEventListener('click', (e) => converse(e, data));
 }
 
-init();
+loadData() //
+  .then((data) => {
+    getDate();
+    setTimeout(friendSay, 1000, data.answers.greethings);
+    setEventHandler(data);
+  })
+  .catch((error) => console.log(error));
