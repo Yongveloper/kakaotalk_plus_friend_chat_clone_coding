@@ -76,19 +76,21 @@ function createFriendHTMLString(answer) {
   </div>
   <div class="chatting_time">
     00:00
-  </div>`;
+  </div>
+  `;
 }
 
-function createSection(user, talk) {
+function createSection(user, content) {
   const mainContainer = document.querySelector('.chatting_main_container');
   const newSection = document.createElement('section');
   newSection.classList.add(user);
   if (user === 'chatting_me') {
-    newSection.innerHTML = createMyHTMLString(talk);
+    newSection.innerHTML = createMyHTMLString(content);
   } else {
-    newSection.innerHTML = createFriendHTMLString(talk);
+    newSection.innerHTML = createFriendHTMLString(content);
   }
   mainContainer.appendChild(newSection);
+
   return newSection;
 }
 
