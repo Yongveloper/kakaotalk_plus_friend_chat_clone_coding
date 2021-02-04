@@ -43,6 +43,7 @@ function scrollDowun() {
   scrollTo(0, scrollHeight);
 }
 
+// 나의 대화 내용 생성
 function createMyHTMLString(question) {
   return `
   <div class="chatting_time">
@@ -56,6 +57,7 @@ function createMyHTMLString(question) {
   `;
 }
 
+// 친구 대화 내용 생성
 function createFriendHTMLString(answer) {
   return `
   <div class="chatting_friend_image">
@@ -80,6 +82,7 @@ function createFriendHTMLString(answer) {
   `;
 }
 
+// 섹션 생성
 function createSection(user, content) {
   const mainContainer = document.querySelector('.chatting_main_container');
   const newSection = document.createElement('section');
@@ -101,7 +104,7 @@ function iSay(question) {
   getTime(mySection);
   scrollDowun();
 }
-// 깐돌이 톡
+// 친구 톡
 function friendSay(answer) {
   const audio = new Audio('audio/카톡.mp3');
   const friend = 'chatting_friend';
@@ -110,8 +113,9 @@ function friendSay(answer) {
   audio.play();
   scrollDowun();
 }
+
 // 질문 리스트 클릭시
-function converse(e, data) {
+function talkToFriend(e, data) {
   const type = e.target.dataset.type;
   switch (type) {
     case 'birthday':
@@ -128,7 +132,7 @@ function converse(e, data) {
 
 function setEventHandler(data) {
   const questionList = document.querySelector('.chatting_questions_list');
-  questionList.addEventListener('click', (e) => converse(e, data));
+  questionList.addEventListener('click', (e) => talkToFriend(e, data));
 }
 
 loadData() //
