@@ -22,7 +22,9 @@ outButton.addEventListener('click', hideMenu);
 
 // Chat Menu Show & Hide
 const chatMenuList = document.querySelector('.chatting_questions_list');
-const chatMenuContainer = document.querySelector('.chatting_questions_container');
+const chatMenuContainer = document.querySelector(
+  '.chatting_questions_container'
+);
 
 function hideChat() {
   chatMenuContainer.style.transform = 'translateY(145px)';

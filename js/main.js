@@ -23,10 +23,14 @@ function getTime(section) {
 
   if (hours > 12) {
     hours = hours - 12;
-    time.innerText = `오후 ${hours < 10 ? `${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+    time.innerText = `오후 ${hours < 10 ? `${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    }`;
   } else {
     hours = hours ? hours : 12;
-    time.innerText = `오전 ${hours < 10 ? `${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
+    time.innerText = `오전 ${hours < 10 ? `${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    }`;
   }
 }
 //
